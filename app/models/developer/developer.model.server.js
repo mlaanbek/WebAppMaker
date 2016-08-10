@@ -1,6 +1,6 @@
 var mongoose = required("mongoose");
 
-module.exports = function () {
+module.exports = function (db) {
     var DeveloperSchema = require("./developer.schema.server.js")();
 
     // create the model from the schema
