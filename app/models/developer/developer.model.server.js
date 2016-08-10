@@ -5,4 +5,15 @@ module.exports = function (db) {
 
     // create the model from the schema
     var Developer = mongoose.model("Developer", DeveloperSchema);
+
+
+    // high-level api
+    var api = {
+        createDeveloper: createDeveloper
+    };
+    return api;
+
+    function createDeveloper(developer) {
+
+    }
 };
