@@ -23,7 +23,9 @@ module.exports = function (db) {
         // we use find with no predicate -> get all the developers
         Developer.find(
             function (err, developers) {
-                console.log(developers);
+                if (!err) {
+                    deferred.resolve(developers);
+                }
             }
         );
 
