@@ -12,9 +12,14 @@ module.exports = function (db) {
 
     // high-level api
     var api = {
-        createDeveloper: createDeveloper
+        createDeveloper: createDeveloper,
+        findAllDevelopers: findAllDevelopers
     };
     return api;
+
+    function findAllDevelopers() {
+        console.log("findAllDevelopers");
+    }
 
     function createDeveloper(developer) {
         var deferred = q.defer();
