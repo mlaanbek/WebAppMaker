@@ -18,12 +18,17 @@ module.exports = function (db) {
     return api;
 
     function findAllDevelopers() {
+        var deferred = q.defer();
+
         // we use find with no predicate -> get all the developers
         Developer.find(
             function (err, developers) {
                 console.log(developers);
             }
         );
+
+        // "I don't have the response yet but I'll let you know when I have. Don't wait for me"
+        return deferred.promise;
     }
 
     function createDeveloper(developer) {

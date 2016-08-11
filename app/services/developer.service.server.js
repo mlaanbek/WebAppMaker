@@ -6,7 +6,8 @@ module.exports = function (app, developerModel) {
     
     function findAllDevelopers(req, res) {
         developerModel
-            .findAllDevelopers();
+            .findAllDevelopers()
+            .then();
     }
 
     function createDeveloper(req, res) {
