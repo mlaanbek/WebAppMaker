@@ -19,6 +19,7 @@ module.exports = function (db) {
     return api;
 
     function findDeveloperByUsername(username) {
+        var deferred = q.defer();
         Developer
             .findOne(
                 {username: username},
@@ -26,6 +27,7 @@ module.exports = function (db) {
                     console.log(developer);
                 }
             );
+        return deferred.promise;
     }
 
     function findAllDevelopers() {

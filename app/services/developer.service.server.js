@@ -7,7 +7,8 @@ module.exports = function (app, developerModel) {
     
     function findDeveloperByUsername(req, res) {
         developerModel
-            .findDeveloperByUsername(req.params.username);
+            .findDeveloperByUsername(req.params.username)
+            .then();
     }
 
     function findAllDevelopers(req, res) {
