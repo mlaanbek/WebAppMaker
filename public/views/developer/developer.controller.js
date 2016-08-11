@@ -5,8 +5,15 @@
         .controller("DeveloperListController", developerListController)
         .controller("NewDeveloperController", newDeveloperController);
 
-    function developerListController() {
+    function developerListController(DeveloperService) {
         var vm = this;
+
+        function init() {
+            DeveloperService
+                .findAllDevelopers();
+        }
+        // gets called when the controller is invoked
+        init();
     }
     
     function newDeveloperController(DeveloperService, $location) {
