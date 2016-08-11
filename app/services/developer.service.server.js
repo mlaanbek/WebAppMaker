@@ -6,7 +6,8 @@ module.exports = function (app, developerModel) {
     app.get("/api/developer/:username", findDeveloperByUsername);
     
     function findDeveloperByUsername(req, res) {
-        console.log("findDeveloperByUsername");
+        developerModel
+            .findDeveloperByUsername(req.params.username);
     }
 
     function findAllDevelopers(req, res) {
