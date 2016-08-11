@@ -15,7 +15,8 @@
         }
 
         function findAllDevelopers() {
-            $http.get("/api/developer");
+            // return a promise
+            return $http.get("/api/developer");
         }
     }
 })();

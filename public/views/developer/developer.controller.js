@@ -10,7 +10,15 @@
 
         function init() {
             DeveloperService
-                .findAllDevelopers();
+                .findAllDevelopers()
+                .then(
+                    function (developers) {
+                        console.log(developers.data);
+                    },
+                    function (err) {
+                        console.log(err);
+                    }
+                );
         }
         // gets called when the controller is invoked
         init();
