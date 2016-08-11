@@ -3,7 +3,12 @@
 module.exports = function (app, developerModel) {
     app.post("/api/developer", createDeveloper);
     app.get("/api/developer", findAllDevelopers);
+    app.get("/api/developer/:username", findDeveloperByUsername);
     
+    function findDeveloperByUsername(req, res) {
+        console.log("findDeveloperByUsername");
+    }
+
     function findAllDevelopers(req, res) {
         developerModel
             .findAllDevelopers()
