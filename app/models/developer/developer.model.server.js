@@ -18,7 +18,12 @@ module.exports = function (db) {
     return api;
 
     function findAllDevelopers() {
-        console.log("findAllDevelopers");
+        // we use find with no predicate -> get all the developers
+        Developer.find(
+            function (err, developers) {
+                console.log(developers);
+            }
+        );
     }
 
     function createDeveloper(developer) {
