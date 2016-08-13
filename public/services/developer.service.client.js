@@ -13,8 +13,8 @@
         };
         return api;
         
-        function deleteDeveloper() {
-            
+        function deleteDeveloper(developer) {
+            $http.delete("/api/developer/" + developer.username);
         }
 
         function updateDeveloper(developer) {
