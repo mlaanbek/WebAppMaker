@@ -21,6 +21,17 @@ module.exports = function (db) {
 
     function updateDeveloper(username, developer) {
 
+        // .update: 1) predicate to filter (if not provided, all fields will be replaced
+        //          2) provide the fields, we want change (in this case we provide the all developer object, but we could be more granular
+        // for example update only lastnames)
+        Developer
+            .update(
+                {username: username},
+                {$set: developer},
+                function (err, stats) {
+                    
+                }
+            );
     }
 
     function findDeveloperByUsername(username) {
