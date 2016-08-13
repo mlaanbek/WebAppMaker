@@ -47,6 +47,7 @@
     function editDeveloperController($routeParams, DeveloperService) {
         var username = $routeParams.username;
         var vm = this;
+        vm.updateDeveloper = updateDeveloper;
 
 
         function init() {
@@ -62,5 +63,9 @@
                 );
         }
         init();
+
+        function updateDeveloper(developer) {
+            console.log(developer);
+        }
     }
 })();
