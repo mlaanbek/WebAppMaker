@@ -21,7 +21,14 @@ module.exports = function (db) {
     return api;
 
     function deleteDeveloper(username) {
-
+        // .remove - if predicate is not provided, no document is removed
+        Developer
+            .remove(
+                {username: username},
+                function (err, stats) {
+                    
+                }
+            );
     }
 
     function updateDeveloper(username, developer) {
