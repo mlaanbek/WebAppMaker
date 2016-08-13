@@ -50,7 +50,7 @@
         var username = $routeParams.username;
         var vm = this;
         vm.updateDeveloper = updateDeveloper;
-        vm.deleteDevolper = deleteDevolper;
+        vm.deleteDeveloper = deleteDeveloper;
 
         function init() {
             DeveloperService
@@ -66,8 +66,9 @@
         }
         init();
         
-        function deleteDevolper() {
-            
+        function deleteDeveloper(developer) {
+            DeveloperService
+                .deleteDeveloper(developer);    
         }
 
         function updateDeveloper(developer) {
