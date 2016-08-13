@@ -20,6 +20,7 @@ module.exports = function (db) {
     return api;
 
     function updateDeveloper(username, developer) {
+        var deferred = q.defer();
 
         // .update: 1) predicate to filter (if not provided, all fields will be replaced
         //          2) provide the fields, we want change (in this case we provide the all developer object, but we could be more granular
@@ -32,6 +33,7 @@ module.exports = function (db) {
                     
                 }
             );
+        return deferred.promise;
     }
 
     function findDeveloperByUsername(username) {

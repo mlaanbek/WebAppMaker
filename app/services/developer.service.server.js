@@ -10,7 +10,8 @@ module.exports = function (app, developerModel) {
         var username = req.params.username;
         var developer = req.body;
         developerModel
-            .updateDeveloper(username, developer);
+            .updateDeveloper(username, developer)
+            .then();
     }
     
     function findDeveloperByUsername(req, res) {
