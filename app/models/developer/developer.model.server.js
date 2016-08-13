@@ -21,6 +21,8 @@ module.exports = function (db) {
     return api;
 
     function deleteDeveloper(username) {
+        var deferred = q.defer();
+
         // .remove - if predicate is not provided, no document is removed
         Developer
             .remove(
@@ -29,6 +31,7 @@ module.exports = function (db) {
                     
                 }
             );
+        return deferred.promise;
     }
 
     function updateDeveloper(username, developer) {
