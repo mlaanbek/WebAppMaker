@@ -44,11 +44,13 @@
         }
     }
 
-    function editDeveloperController($routeParams, DeveloperService) {
+    function editDeveloperController(
+        $routeParams, DeveloperService, $location) {
+
         var username = $routeParams.username;
         var vm = this;
         vm.updateDeveloper = updateDeveloper;
-
+        vm.deleteDevolper = deleteDevolper;
 
         function init() {
             DeveloperService
@@ -63,16 +65,20 @@
                 );
         }
         init();
+        
+        function deleteDevolper() {
+            
+        }
 
         function updateDeveloper(developer) {
             DeveloperService
                 .updateDeveloper(developer)
                 .then(
                     function (response) {
-                        console.log(response)
+                        $location.url("/developer");
                     },
                     function (err) {
-                        console.log(err);
+                        vm.error = err;
                     }
                 );
         }

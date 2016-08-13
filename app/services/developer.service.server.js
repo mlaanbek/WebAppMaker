@@ -13,7 +13,7 @@ module.exports = function (app, developerModel) {
             .updateDeveloper(username, developer)
             .then(
                 function (stats) {
-                    res.send(200);
+                    res.sendStatus(200);
                 },
                 function (err) {
                     res.status(400).send(err);
