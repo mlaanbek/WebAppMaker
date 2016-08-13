@@ -14,6 +14,9 @@ module.exports = function (app, developerModel) {
             .then(
                 function (stats) {
                     res.send(200);
+                },
+                function (err) {
+                    res.status(400).send(err);
                 }
             );
     }
