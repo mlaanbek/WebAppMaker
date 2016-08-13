@@ -8,7 +8,9 @@ module.exports = function (app, developerModel) {
     app.delete("/api/developer/:username", deleteDeveloper);
 
     function deleteDeveloper(req, res) {
-
+        var username = req.params.username;
+        developerModel
+            .deleteDeveloper(username);
     }
 
     function updateDeveloper(req, res) {
