@@ -1,4 +1,4 @@
-var mongoode = require("mongoose");
+var mongoose = require("mongoose");
 var q = require("q");
 
 module.exports = function () {
