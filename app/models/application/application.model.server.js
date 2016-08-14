@@ -12,7 +12,13 @@ module.exports = function () {
     return api;
     
     function findApplicationsForUsername(username) {
-        console.log(username);
+        Application
+            .find(
+                {developerUsername: username},
+                function (err, applications) {
+                    
+                }
+            );
     }
 
     function createApplication(application) {
