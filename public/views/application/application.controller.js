@@ -7,6 +7,9 @@
     
     function editApplicationController
         ($routeParams, ApplicationService) {
+
+        var vm = this;
+        vm.username = $routeParams.username;
         
     }
     
