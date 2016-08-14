@@ -7,7 +7,14 @@ module.exports = function (app, applicationModel) {
         
         applicationModel
             .createApplication(application)
-            .then();
+            .then(
+                function (application) {
+                    res.json(application);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
         
     }
 }

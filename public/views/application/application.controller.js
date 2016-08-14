@@ -17,7 +17,15 @@
         function createApplication(application) {
             application.developerUsername = vm.username;
             ApplicationService
-                .createApplication(application);
+                .createApplication(application)
+                .then(
+                    function (response) {
+                        console.log(response.data);
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
         }
     }
 })();
