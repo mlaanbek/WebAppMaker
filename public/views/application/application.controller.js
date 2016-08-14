@@ -13,7 +13,7 @@
                 .findApplicationsForUsername(vm.username)
                 .then(
                     function (response) {
-                        console.log(response);
+                        vm.applications = response.data;
                     }
                 );
         }
