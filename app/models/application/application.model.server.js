@@ -12,6 +12,8 @@ module.exports = function () {
     return api;
     
     function findApplicationsForUsername(username) {
+        var deferred = q.defer();
+
         Application
             .find(
                 {developerUsername: username},
@@ -19,6 +21,7 @@ module.exports = function () {
                     
                 }
             );
+        return deferred.promise();
     }
 
     function createApplication(application) {
