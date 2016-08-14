@@ -20,6 +20,8 @@ module.exports = function () {
                 function (err, applications) {
                     if (!err) {
                         deferred.resolve(applications);
+                    } else {
+                        deferred.reject(err);
                     }
                 }
             );
