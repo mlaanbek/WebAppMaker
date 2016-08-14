@@ -10,7 +10,7 @@
         };
         return api;
 
-        function findApplicationsForUsername(application) {
+        function findApplicationsForUsername(username) {
             return $http.get("/api/developer/" + username + "/application");
         }
         
