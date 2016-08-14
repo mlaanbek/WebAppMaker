@@ -10,6 +10,13 @@
 
         var vm = this;
         vm.username = $routeParams.username;
+        vm.applicationId = $routeParams.applicationId;
+        
+        function init() {
+            ApplicationService
+                .findApplicationById(vm.applicationId);
+        }
+        init();
         
     }
     
