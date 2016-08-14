@@ -13,7 +13,13 @@ module.exports = function () {
     return api;
 
     function findApplicationById(applicationId) {
-
+        Application
+            .findById(
+                applicationId,
+                function (err, application) {
+                    
+                }
+            );
     }
     
     function findApplicationsForUsername(username) {
