@@ -35,7 +35,9 @@
                 controllerAs: "model"
             })
             .when("/developer/:username/application/edit/:applicationId", {
-                templateUrl: "views/application/application-edit.view.html"
+                templateUrl: "views/application/application-edit.view.html",
+                controller: "EditApplicationController",
+                controllerAs: "model"
             })
             .otherwise({
                 redirectTo: "/developer"
