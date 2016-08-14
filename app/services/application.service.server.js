@@ -6,7 +6,8 @@ module.exports = function (app, applicationModel) {
         var application = req.body;
         
         applicationModel
-            .createApplication(application);
+            .createApplication(application)
+            .then();
         
     }
 }
