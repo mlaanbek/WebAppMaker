@@ -10,7 +10,12 @@
 
         function init() {
             ApplicationService
-                .findApplicationsForUsername(vm.username);
+                .findApplicationsForUsername(vm.username)
+                .then(
+                    function (response) {
+                        console.log(response);
+                    }
+                );
         }
         init();
     }
