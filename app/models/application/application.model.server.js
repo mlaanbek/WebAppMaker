@@ -18,7 +18,9 @@ module.exports = function () {
             .find(
                 {developerUsername: username},
                 function (err, applications) {
-                    
+                    if (!err) {
+                        deferred.resolve(applications);
+                    }
                 }
             );
         return deferred.promise();
