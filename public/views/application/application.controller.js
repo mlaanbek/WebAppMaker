@@ -14,7 +14,13 @@
         
         function init() {
             ApplicationService
-                .findApplicationById(vm.applicationId);
+                .findApplicationById(vm.applicationId)
+                .then(
+                    function (response) {
+                        var application = response.data;
+                        console.log(application);
+                    }
+                );
         }
         init();
         
