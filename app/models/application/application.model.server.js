@@ -15,6 +15,8 @@ module.exports = function () {
     function findApplicationById(applicationId) {
         // from mongoose 4.x we don't have to use q promise
         // It does not return the application with matching application id but istead it returns a promise
+
+        // However, it might be deprecated
         return Application.findById(applicationId);
 
     }
