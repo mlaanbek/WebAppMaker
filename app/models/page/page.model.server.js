@@ -9,6 +9,7 @@ module.exports = function (applicationModel) {
 
     function createPage(applicationId, page) {
 
+        // we have a promise inside promise
         return Application.findById(applicationId)
             .then(
                 function (application) {
