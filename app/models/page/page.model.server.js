@@ -8,10 +8,14 @@ module.exports = function (applicationModel) {
     return api;
 
     function createPage(applicationId, page) {
-        console.log(applicationId);
-        console.log(page);
-        Application.findById(applicationId, function (err, app) {
-            console.log(app);
-        });
+
+        return Application.findById(applicationId)
+            .then(
+                function (application) {
+                    application.pages.push(page);
+                    // save the updated application back to database
+                    return application.save();
+                }
+            );
     }
 };
