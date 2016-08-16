@@ -9,9 +9,15 @@ module.exports = function () {
         createApplication: createApplication,
         findApplicationsForUsername: findApplicationsForUsername,
         findApplicationById: findApplicationById,
-        removeApplication: removeApplication
+        removeApplication: removeApplication,
+        getMongooseModel: getMongooseModel
     };
     return api;
+
+    // to use Application object in other places
+    function getMongooseModel() {
+        return Application;
+    }
 
     function removeApplication(applicationId) {
         return Application.remove().where("_id").equals(applicationId);
