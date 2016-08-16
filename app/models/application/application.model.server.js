@@ -13,13 +13,10 @@ module.exports = function () {
     return api;
 
     function findApplicationById(applicationId) {
-        Application
-            .findById(
-                applicationId,
-                function (err, application) {
-                    
-                }
-            );
+        // from mongoose 4.x we don't have to use q promise
+        // It does not return the application with matching application id but istead it returns a promise
+        return Application.findById(applicationId);
+
     }
     
     function findApplicationsForUsername(username) {
