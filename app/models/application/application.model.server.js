@@ -8,9 +8,14 @@ module.exports = function () {
     var api = {
         createApplication: createApplication,
         findApplicationsForUsername: findApplicationsForUsername,
-        findApplicationById: findApplicationById
+        findApplicationById: findApplicationById,
+        removeApplication: removeApplication
     };
     return api;
+
+    function removeApplication(applicationId) {
+        return Application.remove().where("_id").equals(applicationId);
+    }
 
     function findApplicationById(applicationId) {
         // from mongoose 4.x we don't have to use q promise
