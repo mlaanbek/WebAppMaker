@@ -5,11 +5,25 @@
         .controller("NewPageController", newPageController)
         .controller("EditPageController", editPageController);
 
-    function editPageController($routeParams) {
+    function editPageController($routeParams, PageService) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
         vm.pageId = $routeParams.pageId;
+
+        function init() {
+            PageService
+                .findPage(vm.applicationId, vm.pageId)
+                .then(
+                    function (response) {
+                        vm.page = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+        init();
     }
 
     function pageListController($routeParams, PageService) {

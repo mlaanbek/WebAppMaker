@@ -1,8 +1,25 @@
 module.exports = function (app, applicationModel) {
     app.post("/api/application/:applicationId/page", createPage);
     app.get("/api/application/:applicationId/page", findPagesForApplication);
+    app.get("/api/application/:applicationId/page/:pageId", findPage);
     
     var pageModel = require("../models/page/page.model.server.js")(applicationModel);
+
+    function findPage(req, res) {
+        var applicationId = req.params.applicationId;
+        var pageId = req.params.pageId;
+
+        pageModel
+            .findPage(applicationId, pageId)
+            .then(
+                function (page) {
+                    res.json(page);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
 
     function findPagesForApplication(req, res) {
         var applicationId = req.params.applicationId;
