@@ -11,7 +11,15 @@
 
         function init() {
             PageService
-                .findPagesForApplication(vm.applicationId);
+                .findPagesForApplication(vm.applicationId)
+                .then(
+                    function (response) {
+                        vm.pages = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
         }
         init();
     }

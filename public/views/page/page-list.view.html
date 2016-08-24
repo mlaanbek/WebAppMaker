@@ -7,3 +7,17 @@
     <span class="glyphicon glyphicon-plus"></span>
 </a>
 <h2>Pages</h2>
+
+<div ng-if="model.error"
+    class="alert alert-danger"
+    role="alert">
+    {{model.error}}
+</div>
+
+<table class="table table-striped">
+    <tr ng-repeat="page in model.pages">
+        <td>
+            {{page.name}}
+        </td>
+    </tr>
+</table>
