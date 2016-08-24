@@ -2,7 +2,15 @@
     angular
         .module("WebAppMakerApp")
         .controller("PageListController", pageListController)
-        .controller("NewPageController", newPageController);
+        .controller("NewPageController", newPageController)
+        .controller("EditPageController", editPageController);
+
+    function editPageController($routeParams) {
+        var vm = this;
+        vm.username = $routeParams.username;
+        vm.applicationId = $routeParams.applicationId;
+        vm.pageId = $routeParams.pageId;
+    }
 
     function pageListController($routeParams, PageService) {
         var vm = this;

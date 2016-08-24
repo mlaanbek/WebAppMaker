@@ -51,6 +51,11 @@
                 controller: "NewPageController",
                 controllerAs: "model"
             })
+            .when("/developer/:username/application/:applicationId/page/:pageId/edit", {
+                templateUrl: "views/page/page-edit.view.html",
+                controller: "EditPageController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/developer"
             });

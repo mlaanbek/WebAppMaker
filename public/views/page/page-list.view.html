@@ -18,6 +18,10 @@
     <tr ng-repeat="page in model.pages">
         <td>
             {{page.name}}
+            <a href="#/developer/{{model.username}}/application/{{model.applicationId}}/page/{{page._id}}/edit"
+                class="pull-right btn btn-warning">
+                <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
         </td>
     </tr>
 </table>
