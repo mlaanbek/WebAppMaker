@@ -5,11 +5,13 @@
         .controller("NewPageController", newPageController)
         .controller("EditPageController", editPageController);
 
-    function editPageController($routeParams, PageService) {
+    function editPageController($routeParams, PageService, $location) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
         vm.pageId = $routeParams.pageId;
+
+        vm.removePage = removePage;
 
         function init() {
             PageService
@@ -24,6 +26,19 @@
                 );
         }
         init();
+
+        function removePage(page) {
+            PageService
+                .removePage(vm.applicationId, vm.pageId)
+                .then(
+                    function (response) {
+                        $location.url("/developer/" + vm.username + "/application/" + vm.applicationId + "/page");
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
     }
 
     function pageListController($routeParams, PageService) {
