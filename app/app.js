@@ -11,6 +11,5 @@ module.exports = function (app, db) {
 
     // MongoDB is a document-based DB and is optimized for documents. Thus the preferred way is to
     // embedd documents inside documents instead of having references (optimal for relational DBs)
-    var pageModel = require("./models/page/page.model.server.js")(applicationModel);
-    var pageService = require("./services/page.service.server.js")(app, pageModel);
+    var pageService = require("./services/page.service.server.js")(app, applicationModel);
 };

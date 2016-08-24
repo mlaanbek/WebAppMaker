@@ -3,9 +3,15 @@ module.exports = function (applicationModel) {
     var Application = applicationModel.getMongooseModel();
 
     var api = {
-        createPage: createPage
+        createPage: createPage,
+        findPagesForApplication: findPagesForApplication
     };
     return api;
+
+    function findPagesForApplication(applicationId) {
+        // use select to retrieve a particular field
+        return Application.findById(applicationId).select("pages");
+    }
 
     function createPage(applicationId, page) {
 
