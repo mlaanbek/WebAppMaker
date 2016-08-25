@@ -12,6 +12,7 @@
         vm.pageId = $routeParams.pageId;
 
         vm.removePage = removePage;
+        vm.updatePage = updatePage;
 
         function init() {
             PageService
@@ -26,6 +27,19 @@
                 );
         }
         init();
+
+        function updatePage(page) {
+            PageService
+                .updatePage(vm.applicationId, page)
+                .then(
+                    function (response) {
+                        $location.url("/developer/" + vm.username + "/application/" + vm.applicationId + "/page");
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
 
         function removePage(page) {
             PageService

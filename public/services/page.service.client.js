@@ -8,9 +8,14 @@
             createPage: createPage,
             findPagesForApplication: findPagesForApplication,
             findPage: findPage,
-            removePage: removePage
+            removePage: removePage,
+            updatePage: updatePage
         }
         return api;
+        
+        function updatePage(applicationId, page) {
+            return $http.put("/api/application/" + applicationId + "/page/" + page._id, page);
+        }
         
         function removePage(applicationId, pageId) {
             return $http.delete("/api/application/" + applicationId + "/page/" + pageId);
