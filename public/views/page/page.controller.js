@@ -60,6 +60,8 @@
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
 
+        vm.sortPage = sortPage;
+
         function init() {
             PageService
                 .findPagesForApplication(vm.applicationId)
@@ -73,6 +75,10 @@
                 );
         }
         init();
+
+        function sortPage(start, end) {
+            console.log(start, end);
+        }
     }
 
     function newPageController($routeParams, PageService, $location) {

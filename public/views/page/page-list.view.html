@@ -15,13 +15,15 @@
 </div>
 
 <table class="table table-striped">
-    <tr ng-repeat="page in model.pages">
-        <td>
-            {{page.name}}
-            <a href="#/developer/{{model.username}}/application/{{model.applicationId}}/page/{{page._id}}/edit"
-                class="pull-right btn btn-warning">
-                <span class="glyphicon glyphicon-info-sign"></span>
-            </a>
-        </td>
-    </tr>
+    <tbody jga-sortable jga-sortable-callback="model.sortPage">
+        <tr ng-repeat="page in model.pages">
+            <td with="100%">
+                {{page.name}}
+                <a href="#/developer/{{model.username}}/application/{{model.applicationId}}/page/{{page._id}}/edit"
+                    class="pull-right btn btn-warning">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
 </table>
