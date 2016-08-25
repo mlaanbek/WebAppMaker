@@ -56,6 +56,13 @@
                 controller: "EditPageController",
                 controllerAs: "model"
             })
+            
+            // widget routes
+            .when("/developer/:username/application/:applicationId/page/:pageId/widget", {
+                templateUrl: "views/widget/widget-list.view.html",
+                controller: "WidgetListController",
+                controllerAs: "model"
+            })
             .otherwise({
                 redirectTo: "/developer"
             });
