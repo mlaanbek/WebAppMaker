@@ -10,6 +10,7 @@
 <h2>Widgets</h2>
 
 <div ng-repeat="widget in model.widgets">
+    {{widget.widgetType}}
     <div ng-switch="widget.widgetType">
         <div ng-switch-when="HEADER">
             <h1 ng-if="widget.header.size===1">
@@ -30,6 +31,27 @@
             <h6 ng-if="widget.header.size===6">
                 {{widget.text}}
             </h6>
+        </div>
+        <div ng-switch-when="LABEL">
+            <label>
+                {{widget.text}}
+            </label>
+        </div>
+        <div ng-switch-when="TEXT_INPUT">
+            <input ng-if="!widget.rows || widget.rows===1"
+                    name="{{widget.name}}"
+                    id="{{widget.id}}"
+                    value="{{widget.text}}"
+                    placeholder="{{widget.placeholder}}"
+                    class="form-control"/>
+            <textarea ng-if="widget.rows > 1"
+                        name="{{widget.name}}"
+                        rows="{{widget.rows}}"
+                        id="{{widget.id}}"
+                        value="{{widget.text}}"
+                        placeholder="{{widget.placeholder}}"
+                        class="form-control">
+            </textarea>
         </div>
     </div>
 </div>
