@@ -4,11 +4,17 @@
         .controller("WidgetListController", widgetListController)
         .controller("ChooseWidgetController", chooseWidgetController);
 
-    function widgetListController($routeParams, PageService, $location) {
+    function widgetListController($routeParams, WidgetService, $location) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
         vm.pageId = $routeParams.pageId;
+
+        function init() {
+            WidgetService
+                .getWidgets(vm.applicationId, vm.pageId);
+        }
+        init();
     }
 
     function chooseWidgetController($routeParams, WidgetService, $location) {
