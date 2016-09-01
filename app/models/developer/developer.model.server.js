@@ -12,6 +12,8 @@ module.exports = function (db) {
     // create the model from the schema
     var Developer = mongoose.model("Developer", DeveloperSchema);
 
+    passport.use(new LocalStrategy(findDeveloperByCredentials));
+
 
     // high-level api
     var api = {
@@ -22,6 +24,10 @@ module.exports = function (db) {
         deleteDeveloper: deleteDeveloper
     };
     return api;
+
+    function findDeveloperByCredentials(username, password, done) {
+
+    }
 
     function deleteDeveloper(username) {
         var deferred = q.defer();
