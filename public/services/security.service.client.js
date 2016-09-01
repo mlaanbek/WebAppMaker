@@ -13,4 +13,4 @@
             return $http.post("/api/login", user);
         }
     }
-})
+})();
