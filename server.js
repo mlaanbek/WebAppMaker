@@ -7,6 +7,15 @@ var app = express();
 var mongoose = require("mongoose");
 var db = mongoose.connect('mongodb://localhost/web-app-maker');
 
+// load passport module
+var passport = require('passport');
+
+// load cookie parser
+var cookieParser = require('cookie-parser');
+
+//load session support
+var session = require('express-session');
+
 // install, load, and configure body parser module
 var bodyParser = require('body-parser');
 var multer = require('multer');
