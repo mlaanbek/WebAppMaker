@@ -3,6 +3,9 @@ var mongoose = require("mongoose");
 // a common promise library
 var q = require("q");
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
 module.exports = function (db) {
     var DeveloperSchema = require("./developer.schema.server.js")();
 
