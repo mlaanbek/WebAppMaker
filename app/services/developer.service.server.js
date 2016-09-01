@@ -15,6 +15,8 @@ module.exports = function (app, developerModel) {
     app.post("/api/login", passport.authenticate('local'), login);
 
     passport.use(new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
 
     function localStrategy(username, password, done) {
         developerModel
@@ -24,6 +26,7 @@ module.exports = function (app, developerModel) {
                     if (!user) {
                         return done(null, false);
                     }
+                    delete user.password;
                     return done(null, user);
                 },
                 function (err) {
@@ -43,6 +46,7 @@ module.exports = function (app, developerModel) {
     };
 
     function serializeUser(user, done) {
+        delete user.password;
         done(null, user);
     }
 
@@ -51,6 +55,7 @@ module.exports = function (app, developerModel) {
             .findDeveloperById(user._id)
             .then(
                 function (user) {
+                    delete user.password;
                     done(null, user);
                 },
                 function (err) {
@@ -61,6 +66,7 @@ module.exports = function (app, developerModel) {
     
     function login(req, res) {
         var user = req.user;
+        delete user.password;
         res.json(user);
     }
 
@@ -98,6 +104,7 @@ module.exports = function (app, developerModel) {
             .findDeveloperByUsername(req.params.username)
             .then(
                 function (developer) {
+                    delete user.password;
                     res.json(developer);
                 },
                 function (err) {
