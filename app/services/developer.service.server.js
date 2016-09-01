@@ -18,7 +18,7 @@ module.exports = function (app, developerModel) {
 
     function localStrategy(username, password, done) {
         developerModel
-            .findUserByCredentials({username: username, password: password})
+            .findDeveloperByCredentials({username: username, password: password})
             .then(
                 function (user) {
                     if (!user) {
