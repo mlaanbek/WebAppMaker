@@ -69,7 +69,7 @@
                 templateUrl: "views/page/page-edit.view.html",
                 controller: "EditPageController",
                 controllerAs: "model",
-                resolve: {loggedin: checkLoggedin}
+                resolve: { loggedin: checkLoggedin }
             })
             
             // widget routes
@@ -89,23 +89,25 @@
                 redirectTo: "/"
             });
 
-        var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
-            var deferred = $.defer();
 
-            $http.get("/api/loggedin").success(function (user) {
-                $rootScope.errorMessage = null;
-
-                if (user !== '0') {
-                    $rootScope.currentUser = user;
-                    deferred.resolve();
-                } else {
-                    $rootScope.error = 'You need to log in.';
-                    deferred.reject();
-                    $location.url('/');
-                }
-            });
-
-            return deferred.promise;
-        };
     }
+
+    var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get("/api/loggedin").success(function (user) {
+            $rootScope.errorMessage = null;
+
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            } else {
+                $rootScope.error = 'You need to log in.';
+                deferred.reject();
+                $location.url('/');
+            }
+        });
+
+        return deferred.promise;
+    };
 })();
