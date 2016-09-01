@@ -5,18 +5,24 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function (app, developerModel) {
-    app.post("/api/developer", createDeveloper);
-    app.get("/api/developer", findAllDevelopers);
-    app.get("/api/developer/:username", findDeveloperByUsername);
-    app.put("/api/developer/:username", updateDeveloper);
-    app.delete("/api/developer/:username", deleteDeveloper);
+    app.post    ("/api/developer", createDeveloper);
+    app.get     ("/api/developer", findAllDevelopers);
+    app.get     ("/api/developer/:username", findDeveloperByUsername);
+    app.put     ("/api/developer/:username", updateDeveloper);
+    app.delete  ("/api/developer/:username", deleteDeveloper);
 
     var auth = authorized;
-    app.post("/api/login", passport.authenticate('local'), login);
+    app.post    ("/api/login", passport.authenticate('local'), login);
+    app.post    ("/api/logout", logout);
 
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
+
+    function logout(req, res) {
+        req.logOut();
+        res.send(200);
+    }
 
     function localStrategy(username, password, done) {
         developerModel

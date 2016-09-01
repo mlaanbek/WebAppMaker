@@ -14,27 +14,37 @@
     {{model.error}}
 </div>
 
+Username
 <input ng-model="model.developer.username"
     class="form-control"
     placeholder="username"/>
 
+Password
 <input ng-model="model.developer.password"
        class="form-control"
        placeholder="password"/>
 
+Email
 <input ng-model="model.developer.email"
        class="form-control"
        placeholder="email"/>
 
+First Name
 <input ng-model="model.developer.firstName"
        class="form-control"
        placeholder="First Name"/>
 
+Last Name
 <input ng-model="model.developer.lastName"
        class="form-control"
        placeholder="Last Name"/>
 
 <button ng-click="model.deleteDeveloper(model.developer)"
+        class="btn btn-danger btn-block">
+    Unregister
+</button>
+
+<button ng-click="main.logout(model.developer)"
     class="btn btn-danger btn-block">
-    Delete
+    Logout
 </button>
