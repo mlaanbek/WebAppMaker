@@ -5,6 +5,12 @@
     
     function Configure($routeProvider) {
         $routeProvider
+            // authentication routes
+            .when("/", {
+                templateUrl: "views/security/login.view.html",
+                controller: "LoginController",
+                controllerAs: "model"
+            })
 
             // developer routes
             .when("/developer", {
@@ -69,7 +75,7 @@
                 controllerAs: "model"
             })
             .otherwise({
-                redirectTo: "/developer"
+                redirectTo: "/"
             });
     }
 })();
