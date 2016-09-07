@@ -12,6 +12,8 @@
         vm.pageId = $routeParams.pageId;
         vm.widgetId = $routeParams.widgetId;
 
+        vm.updateWidget = updateWidget;
+
         function init() {
             WidgetService
                 .findWidgetById(vm.applicationId, vm.pageId, vm.widgetId)
@@ -25,6 +27,10 @@
                 );
         }
         init();
+
+        function updateWidget(widget) {
+            console.log(widget);
+        }
     }
 
     function widgetListController($routeParams, WidgetService, $location) {
