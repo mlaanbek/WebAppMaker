@@ -42,11 +42,13 @@
         }
     }
 
-    function widgetListController($routeParams, WidgetService, $location) {
+    function widgetListController($routeParams, WidgetService, $sce) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
         vm.pageId = $routeParams.pageId;
+
+        vm.safeYouTubeUrl = safeYouTubeUrl;
 
         function init() {
             WidgetService
@@ -61,6 +63,15 @@
                 );
         }
         init();
+
+        function safeYouTubeUrl(widget) {
+            if (widget) {
+                var urlParts = widget.youTube.url.split("/");
+                var youTubeId = urlParts[urlParts.length - 1];
+                return $sce.trustasResourceUrl("https://www.youtube.com/embed/" + youTubeId);
+            }
+            return "";
+        }
     }
 
     function chooseWidgetController($routeParams, WidgetService, $location) {
