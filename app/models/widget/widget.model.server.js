@@ -3,9 +3,21 @@ module.exports = function (applicationModel) {
 
     var api = {
         createWidget: createWidget,
-        updateWidget: updateWidget
+        updateWidget: updateWidget,
+        removeWidget: removeWidget
     };
     return api;
+
+    function removeWidget(applicationId, pageId, widgetId) {
+        return Application
+            .findById(applicationId)
+            .then(
+                function (application) {
+                    application.pages.id(pageId).widgets.remove(widgetId);
+                    return application.save();
+                }
+            );
+    }
 
     function updateWidget(applicationId, pageId, widgetId, newWidget) {
         delete newWidget._id;

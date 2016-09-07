@@ -13,6 +13,7 @@
         vm.widgetId = $routeParams.widgetId;
 
         vm.updateWidget = updateWidget;
+        vm.removeWidget = removeWidget;
 
         function init() {
             WidgetService
@@ -27,6 +28,19 @@
                 );
         }
         init();
+
+        function removeWidget(widget) {
+            WidgetService
+                .removeWidget(vm.applicationId, vm.pageId, vm.widgetId)
+                .then(
+                    function (response) {
+                        $location.url("/developer/" + vm.username + "/application/" + vm.applicationId + "/page/" + vm.pageId + "/widget");
+                    },
+                    function (error) {
+                        vm.error = error;
+                    }
+                );
+        }
 
         function updateWidget(widget) {
             WidgetService
