@@ -5,12 +5,26 @@
         .controller("ChooseWidgetController", chooseWidgetController)
         .controller("WidgetEditController", widgetEditController);
     
-    function widgetEditController($routeParams) {
+    function widgetEditController($routeParams, WidgetService) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
         vm.pageId = $routeParams.pageId;
         vm.widgetId = $routeParams.widgetId;
+
+        function init() {
+            WidgetService
+                .findWidgetById(vm.applicationId, vm.pageId, vm.widgetId)
+                .then(
+                    function (response) {
+                        vm.widget = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+        init();
     }
 
     function widgetListController($routeParams, WidgetService, $location) {
