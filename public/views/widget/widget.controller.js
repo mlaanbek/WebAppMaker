@@ -5,7 +5,7 @@
         .controller("ChooseWidgetController", chooseWidgetController)
         .controller("WidgetEditController", widgetEditController);
     
-    function widgetEditController($routeParams, WidgetService) {
+    function widgetEditController($routeParams, WidgetService, $location) {
         var vm = this;
         vm.username = $routeParams.username;
         vm.applicationId = $routeParams.applicationId;
@@ -29,7 +29,16 @@
         init();
 
         function updateWidget(widget) {
-            console.log(widget);
+            WidgetService
+                .updateWidget(vm.applicationId, vm.pageId, vm.widgetId, widget)
+                .then(
+                    function (response) {
+                        $location.url("/developer/" + vm.username + "/application/" + vm.applicationId + "/page/" + vm.pageId + "/widget");
+                    },
+                    function (error) {
+                        vm.error = error;
+                    }
+                )
         }
     }
 
